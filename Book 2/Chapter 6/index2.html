@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+
+const restaurant = {
+    name: "Bob's Burgers",
+    orders: [],
+    meal: {
+        sandwichType: "",
+        fries: "",
+        drinksize: ""
+    },
+    placeOrder: function(meal) {
+        this.orders.push(meal);
+    },
+    getAllOrders: function() {
+        orders.forEach(meal => {
+            console.log(meal.sandwichType);
+            console.log(meal.fries);
+            console.log(meal.drinksize);
+        });
+    }
+}
+
+const chickenComboMeal = {
+
+}
+
+// Place an order
+restaurant.placeOrder()
+
+// Invoke the function to return the list of all orders
+
+// Output all orders to the console using console.table()
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+const CongressionalDistrict = {
+    district: "MyDistrict",
+    ChangeDistrict: function(newDistrict) {
+        this.district = newDistrict;
+    }
+}
+const Platform = {
+    taxes: 0.00,
+    jobs: "",
+    infrastructure: "",
+    health_care: "",
+    crime_enforcement: ""
+}
+const Donation_URL = {
+    URL: "",
+    ChangeURL: function(newURL) {
+        this.URL = newURL;
+    }
+}
+const Calendar = {
+    calendar: [],
+    event: {
+        month: "",
+        day: 0,
+        year: 0
+    },
+    addevent: function(event) {
+        calendar.push(event);
+    }
+}
+const VolunteerInfo = {
+    name: "",
+    address: "",
+    email: "",
+    phoneNumber: "",
+    availability = true,
+    activities: ""
+}
+const Biography = {
+    bio: "",
+    ChangeBiography: function(newBiography) {
+        this.bio = newBiography;
+    }
+}
+const ImageGallery = {
+    headShot: new File(""),
+    family: new File(""),
+    constituents: new File("")
+}
+const MissionStatement = {
+    statement = "",
+    ChangeStatement: function(newStatement) {
+        this.statement = newStatement;
+    }
+}
+const VoteURL = {
+    URL: "",
+    ChangeURL: function(newURL) {
+        this.URL = newURL;
+    }
+}
+
+</script>
+</body>
+</html>

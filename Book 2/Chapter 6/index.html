@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+
+const Dog = {
+    name: "Dodge",
+    species: "Beagle",
+    nicknames: ["Dodgie", "garbage-disposal"],
+    age: 14,
+    bark: function() {
+        console.log("BARK!");
+    },
+    whine: function() {
+        console.log("WHINE!");
+    },
+    pant: function() {
+        console.log("Pant, Pant...");
+    },
+    favoriteToys: [],
+    play: function(toy) {
+        if (toy == "food") {
+            this.favoriteToys.push("food");
+        } else {
+            console.log("Yuck!");
+        }
+    }
+}
+
+</script>
+</body>
+</html>
