@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table id="foodList">
+    <tr></tr>
+</table>
+</body>
+<script>
+fetch("http://localhost:8088/food")
+.then(foods => foods.json())
+.then(parsedFoods => {
+    parsedFoods.forEach(food => {
+        fetch(`https://world.openfoodfacts.org/api/v0/product/${food["barcode"]}.json`)
+            .then(response => response.json())
+            .then(productInfo => {
+                if (productInfo.product.ingredients_text) {
+                    productInfo.product.ingredients_text = productInfo.product.ingredients_text
+                } else {
+                    productInfo.product.ingredients_text = "none listed"
+                }
+
+                if (productInfo.product.nutriments.energy_serving) {
+                    productInfo.product.nutriments.energy_serving = productInfo.product.nutriments.energy_serving
+                } else {
+                    productInfo.product.nutriments.energy_serving = "not listed"
+                }
+
+                if (productInfo.product.nutriments.sugars_serving) {
+                    productInfo.product.nutriments.sugars_serving = productInfo.product.nutriments.sugars_serving
+                } else {
+                    productInfo.product.nutriments.sugars_serving = "not listed"
+                }
+                const foodAsHTML = foodFactory(productInfo, food["name"])
+                addFoodToDom(foodAsHTML)
+            })  
+    })
+})
+
+const foodContainer = document.querySelector("#foodList")
+
+const addFoodToDom = (HTML) => {
+    foodContainer.innerHTML += HTML
+}
+
+const foodFactory = (foodIn, foodName) => {
+    return `
+        <td>
+            <h3>${foodName}</h3>
+            <p>Country: ${foodIn.product.countries}</p>
+            <p>Calories per serving: ${foodIn.product.nutriments.energy_serving}</p>
+            <p>Fat per serving: ${foodIn.product.nutriments.fat}</p>
+            <p>Sugar per serving: ${foodIn.product.nutriments.sugars_serving}</p>
+            <p>Ingredients: ${foodIn.product.ingredients_text}</p>           
+        </td>
+    `
+}
+</script>
+<style>
+    body #foodList {
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+    }
+
+    body #foodList tr td {
+        padding: 15px;
+        border: 2px solid red;
+        width: 200px;
+    }
+</style>
+</html>
